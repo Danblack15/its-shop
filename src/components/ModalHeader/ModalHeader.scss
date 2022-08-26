@@ -27,6 +27,7 @@ $whiteColor: #FFFFFF;
 		width: 32px;
 		height: 32px;
 		cursor: pointer;
+		user-select: none;
 		transition: opacity .2s;
 
 		&:hover {
