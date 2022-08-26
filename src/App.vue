@@ -1,0 +1,29 @@
+<template>
+  <router-view/>
+</template>
+
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+$blackColor: #1F2020;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: $blackColor;
+}
+</style>
