@@ -1,18 +1,55 @@
 <template>
-	<div class="products-page">
-		<Header />
-		<Slider class="products-page__slider"/>
+	<LoadingBlock v-if="loading" />
+	<div class="products-page" v-else>
+		<HeaderBlock />
+		<Slider class="products-page__slider" />
+
+		<div class="products-page__content">
+			<FiltresBlock :class="['products-page__filters', 
+				{'products-page__filters-mobile': showFiltres}]"
+			/>
+			<ProductsBlock />
+		</div>
+
+		<FooterBlock />
 	</div>
 </template>
 
 <script>
-import Header from '@/components/Header/Header'
+import { mapActions, mapGetters } from 'vuex'
+
+import HeaderBlock from '@/components/HeaderBlock/HeaderBlock'
 import Slider from '@/components/Slider/Slider'
+import FiltresBlock from '@/components/FiltresBlock/FiltresBlock'
+import ProductsBlock from '@/components/ProductsBlock/ProductsBlock'
+import FooterBlock from '@/components/FooterBlock/FooterBlock'
+import LoadingBlock from '@/components/LoadingBlock/LoadingBlock'
 
 export default {
 	components: {
-		Header,
-		Slider
+		HeaderBlock,
+		Slider,
+		FiltresBlock,
+		ProductsBlock,
+		FooterBlock,
+		LoadingBlock
+	},
+
+	mounted() {
+		this.allProductsGet()
+	},
+
+	methods: {
+		...mapActions({
+			allProductsGet: 'data/allProductsGet'
+		})
+	},
+
+	computed: {
+		...mapGetters({
+			loading: 'data/getLoading',
+			showFiltres: 'data/getShowFilters'
+		})
 	}
 }
 </script>
