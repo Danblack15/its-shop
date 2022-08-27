@@ -1,7 +1,9 @@
 <template>
   <div class="products">
+    <BreadCrumbs class="products__breadcrumbs"/>
+    <h1 class="products__title">Краски</h1>
     <div class="products__info">
-      <p class="products__length">{{ allProducts.length }} товаров</p>
+      <p class="products__length">{{ filtredProducts.length }} товар{{setEnding}}</p>
       <p class="products__open-filtres" @click="toggleFilters">Фильтры</p>
       <div class="products__sort">
         <div class="products__sort-title" @click="toggleModal">
@@ -22,27 +24,36 @@
       class="products__grid" 
       v-masonry="'products'"
       item-selector=".products__item"
-      transition-duration="0.7s"
+      transition-duration="0.5s"
       column-width=".products__item"
       stagger="0.03s"
 			gutter="18"
-      v-if="allProducts"
+      v-if="filtredProducts.length > 0"
     >
       <ProductItem 
         class="products__item" 
         v-masonry-tile
-        v-for="product in allProducts"
+        v-for="product in filtredProducts"
         :key="product.id"
         :product="product"
       />
     </section>
+    <div class="products__empty" v-else>
+      <h3 class="products__empty-title">Товаров не найдено</h3>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
+import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
+
 export default {
+  components: {
+    BreadCrumbs
+  },
+
   data() {
     return {
       showModal: false
@@ -61,8 +72,22 @@ export default {
 
   computed: {
     ...mapGetters({
-      allProducts: 'data/getAllProducts'
-    })
+      filterList: 'data/getFilterList',
+      filtredProducts: 'data/getFilteredProducts'
+    }),
+
+    setEnding() {
+      switch(this.filtredProducts.length) {
+        case 1:
+          return ''
+        case 2:
+        case 3:
+        case 4:
+          return 'а'
+        default:
+          return 'ов'
+      }
+    }
   },
 
   watch: {
@@ -71,9 +96,16 @@ export default {
         document.documentElement.style.overflow = 'hidden'
         return
       }
-
       document.documentElement.style.overflow = 'auto'
-    }
+    },
+    filtredProducts: {
+			handler: function() {
+				setTimeout(() => {
+					this.$redrawVueMasonry('products')
+				}, 120)
+			},
+			deep: true			
+		}
   }
 }
 </script>

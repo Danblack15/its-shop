@@ -1,5 +1,7 @@
 $whiteColor: #FFFFFF;
 $dopWhiteColor: #FFFFFF;
+$blackColor: #1F2020;
+$silverColor: #C4C4C4;
 
 .breadcrumbs {
 	display: flex;
@@ -33,6 +35,18 @@ $dopWhiteColor: #FFFFFF;
 		&:last-child {
 			&::after {
 				display: none;
+			}
+		}
+	}
+}
+
+@media (max-width: 780px) {
+	.breadcrumbs {
+		&__item {
+			color: $blackColor;
+
+			&::after {
+				background: $silverColor;
 			}
 		}
 	}
