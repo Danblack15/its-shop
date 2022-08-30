@@ -1,11 +1,6 @@
-$darkColor: hsla(0, 0%, 0%, 0.1);
-$greenColor: #7BB899;
-$hoverGreenColor: #61d099;
-$silverColor: #F2F2F2;
-
 .product {
 	padding-bottom: 14px;
-	border-bottom: 1px solid $darkColor;
+	border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
 	position: relative;
 
 	&:hover {
@@ -64,7 +59,7 @@ $silverColor: #F2F2F2;
 		position: absolute;
 		width: 80px;
 		height: 32px;
-		background: $greenColor;
+		background: $greenDarkColor;
 		border: none;
 		border-radius: 8px;
 		bottom: 0;
@@ -77,8 +72,23 @@ $silverColor: #F2F2F2;
 		opacity: 0;
 
 		&:hover {
-			background: $hoverGreenColor;
+			background: $greenColor;
 			transition: .2s;
+		}
+
+		&--added {
+			opacity: 1;
+		}
+
+		& img {
+			transform: rotate(0);
+			transition: transform .2s;
+		}
+	}
+
+	&__button {
+		&--delete {
+			transform: rotate(45deg) !important;
 		}
 	}
 }
@@ -101,13 +111,20 @@ $silverColor: #F2F2F2;
 		&__add {
 			width: 40px;
 			height: 24px;
-			opacity: 1;
-			background: $silverColor;
 
 			& img {
 				width: 16px;
 				height: 16px;
 			}
+		}
+	}
+}
+
+@media (pointer: coarse) {
+	.product {
+		&__add {
+			background: $silverDopColor;
+			opacity: 1;
 		}
 	}
 }

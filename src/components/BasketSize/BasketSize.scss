@@ -1,10 +1,7 @@
-$greenColor: #7BB899;
-$blackColor: #1F2020;
-
 .basket-size {
 	width: 24px;
 	height: 24px;
-	background: $greenColor;
+	background: $greenDarkColor;
 	border-radius: 50%;
 	display: flex;
 	justify-content: center;
@@ -21,7 +18,7 @@ $blackColor: #1F2020;
 	&:hover {
 		transform: scale(1.2);
 		background: $blackColor;
-		color: $greenColor;
+		color: $greenDarkColor;
 		transition: .3s;
 	}
 }

@@ -1,34 +1,17 @@
-$silverColor: #F2F2F2;
-$blackColor: #1F2020;
-$darkColor: #000000;
-$greenColor: #7BB899;
-$whiteColor: #FFFFFF;
-
 .filtres {
 	min-width: 170px;
 
 	&__back {
 		display: flex;
 		flex-direction: column;
-		grid-row-gap: 10px;
 	}
 
 	&__input {
 		display: none;
+	}
 
-		&:checked~ {
-			.filtres__label {
-				.filtres__condition {
-					background: $greenColor;
-				}
-
-				.filtres__circle {
-					left: calc(100% - 7px);
-					transform: translateX(-100%) translateY(-50%);
-					transition: .3s;
-				}
-			}
-		}
+	&__item {
+		margin-bottom: 10px;
 	}
 
 	&__label {
@@ -40,6 +23,18 @@ $whiteColor: #FFFFFF;
 		&:hover {
 			& .filtres__name {
 				opacity: 0.7;
+			}
+		}
+
+		&--active {
+			.filtres__condition {
+				background: $greenDarkColor;
+			}
+
+			.filtres__circle {
+				left: calc(100% - 7px);
+				transform: translateX(-100%) translateY(-50%);
+				transition: .3s;
 			}
 		}
 	}
@@ -59,7 +54,7 @@ $whiteColor: #FFFFFF;
 		position: relative;
 		width: 36px;
 		height: 22px;
-		background: $silverColor;
+		background: $silverDopColor;
 		border-radius: 40px;
 		transition: background .3s;
 	}

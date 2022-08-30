@@ -38,10 +38,18 @@
       <BreadCrumbs class="slider__breadcrumbs"/>
 
       <div class="slider__nav slider__prev" ref="prev">
-        <img src="@/assets/svg/arrow.svg" alt="prev" class="slider__prev-img"/>
+        <img 
+          src="@/assets/svg/arrow.svg" 
+          alt="prev" 
+          class="slider__prev-img"
+        />
       </div>
       <div class="slider__nav slider__next" ref="next">
-        <img src="@/assets/svg/arrow.svg" alt="next" class="slider__next-img"/>
+        <img 
+          src="@/assets/svg/arrow.svg" 
+          alt="next" 
+          class="slider__next-img"
+        />
       </div>
     </swiper>
   </div>
@@ -66,7 +74,6 @@ export default {
     BreadCrumbs
   },
   
-
   setup() {
     const prev = ref(null)
     const next = ref(null)
@@ -80,5 +87,6 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/assets/styles/variables';
 @import './Slider.scss';
 </style>

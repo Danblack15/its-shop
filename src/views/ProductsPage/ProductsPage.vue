@@ -1,5 +1,6 @@
 <template>
 	<LoadingBlock v-if="loading" />
+
 	<div class="products-page" v-else>
 		<HeaderBlock />
 		<Slider class="products-page__slider" />
@@ -24,16 +25,18 @@ import FiltresBlock from '@/components/FiltresBlock/FiltresBlock'
 import ProductsBlock from '@/components/ProductsBlock/ProductsBlock'
 import FooterBlock from '@/components/FooterBlock/FooterBlock'
 import LoadingBlock from '@/components/LoadingBlock/LoadingBlock'
+import BasketBlock from '@/components/BasketBlock/BasketBlock'
 
 export default {
 	components: {
-		HeaderBlock,
-		Slider,
-		FiltresBlock,
-		ProductsBlock,
-		FooterBlock,
-		LoadingBlock
-	},
+    HeaderBlock,
+    Slider,
+    FiltresBlock,
+    ProductsBlock,
+    FooterBlock,
+    LoadingBlock,
+    BasketBlock
+},
 
 	mounted() {
 		this.allProductsGet()
@@ -54,6 +57,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import './ProductsPage.scss';
 </style>
